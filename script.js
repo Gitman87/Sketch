@@ -22,7 +22,7 @@ sizeButton.addEventListener('click',()=>
         let  sContainer = document.createElement('div');
         sContainer.classList.add('small-container');
         sContainer.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-        background-color: orange;`
+        background-color: black; opacity:0.0;`
         dContainer.appendChild(sContainer);
       }
       //setting flag
@@ -33,10 +33,18 @@ sizeButton.addEventListener('click',()=>
       let pixels = document.querySelectorAll('.small-container');
       pixels.forEach((pixel)=>
       {
+        let opacity= parseFloat('0.0');
           pixel.addEventListener('mouseover',()=>
         {
+          if(opacity < 1.0)
+          {
+            opacity += 0.1;
+            opacity = Math.round(opacity * 100)/100;
+          }
+          
+          console.log(opacity);
           pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-          background-color: black;`
+          background-color: black; opacity:${opacity};`
           console.log("mousedown");
           
         })
@@ -64,7 +72,7 @@ sizeButton.addEventListener('click',()=>
         let  sContainer = document.createElement('div');
         sContainer.classList.add('small-container');
         sContainer.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-        background-color: orange;`
+        background-color: black;opacity:0.0;`
         dContainer.appendChild(sContainer);
       }
       //setting flag back
@@ -74,11 +82,19 @@ sizeButton.addEventListener('click',()=>
 
       let pixels = document.querySelectorAll('.small-container');
       pixels.forEach((pixel)=>
-      {
+      {   
+        let opacity= 0.0;
           pixel.addEventListener('mouseover',()=>
-        {
+        { 
+          if(opacity < 1.0)
+          {
+            opacity += 0.1;
+            opacity = Math.round(opacity * 100)/100;
+          }
+          
+          console.log(opacity);
           pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-          background-color: black;`
+          background-color: black; opacity: ${opacity};`
           console.log("mousedown");
           
         })
