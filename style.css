@@ -1,6 +1,6 @@
 .main-container {
   display:flex;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   margin-top:10vh;
   justify-content: center;
   flex-direction: column;
