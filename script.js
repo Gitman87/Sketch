@@ -19,6 +19,10 @@ dContainer.addEventListener('click',()=>
     clickFlag=1;
   }
 })
+dContainer.addEventListener('mouseover',()=>
+{
+  dContainer.setAttribute('style','cursor:cell');
+})
 
 
 sizeButton.addEventListener('click',()=>
@@ -185,6 +189,7 @@ colors.forEach((color)=>
   }
 })
 })
+//change coursor
   
    
 
