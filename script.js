@@ -12,7 +12,7 @@ dContainer.addEventListener('click',()=>
   if(clickFlag>0)
   {
     clickFlag=0;
-    console.log("draw area clicked");
+    
   }
   else
   {
@@ -66,10 +66,10 @@ sizeButton.addEventListener('click',()=>
               opacity = Math.round(opacity * 100)/100;
             }
             
-            console.log(opacity);
+            
             pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
             background-color: ${colorFlag}; opacity:${opacity};`
-            console.log("mousedown");
+            
           }
           
           
@@ -121,10 +121,10 @@ sizeButton.addEventListener('click',()=>
               opacity = Math.round(opacity * 100)/100;
             }
             
-            console.log(opacity);
+            
             pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
             background-color: ${colorFlag}; opacity: ${opacity};`
-            console.log("mousedown");
+            
           }
           
           
@@ -137,7 +137,7 @@ sizeButton.addEventListener('click',()=>
     }
   })
 
-console.log(resetFlag)
+
 //drawing mechanism
 //add onmousedown listener
 if(resetFlag<1)
@@ -148,7 +148,7 @@ if(resetFlag<1)
       pixel.addEventListener('click',()=>
     {
       pixel.setAttribute("style", "background-color: black;" );
-      console.log("mousedown");
+    
       
     })
 
@@ -159,7 +159,7 @@ const colors=document.querySelectorAll('.color');
 colors.forEach((color)=>
 {
   color.addEventListener('click', ()=>
-{ console.log(color.id);
+{ 
   switch(color.id)
   {
     case 'white':
