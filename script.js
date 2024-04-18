@@ -2,8 +2,25 @@
 const sizeButton= document.querySelector('.number-size');
 let size=0;
 let resetFlag=1;
+let clickFlag=1;
+let colorFlag="black";
 //populating square divs
 const dContainer = document.querySelector('.draw-container');
+//check for click on draw area listener
+dContainer.addEventListener('click',()=>
+{
+  if(clickFlag>0)
+  {
+    clickFlag=0;
+    console.log("draw area clicked");
+  }
+  else
+  {
+    clickFlag=1;
+  }
+})
+
+
 sizeButton.addEventListener('click',()=>
   {  
     if(resetFlag>0)
@@ -22,11 +39,12 @@ sizeButton.addEventListener('click',()=>
         let  sContainer = document.createElement('div');
         sContainer.classList.add('small-container');
         sContainer.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-        background-color: black; opacity:0.0;`
+        background-color: white; opacity:0.0;`
         dContainer.appendChild(sContainer);
       }
       //setting flag
       resetFlag=0;
+      
       //drawing mechanism
       //add onmousedown listener
 
@@ -36,22 +54,27 @@ sizeButton.addEventListener('click',()=>
         let opacity= parseFloat('0.0');
           pixel.addEventListener('mouseover',()=>
         {
-          if(opacity < 1.0)
+          if(clickFlag<1)
           {
-            opacity += 0.1;
-            opacity = Math.round(opacity * 100)/100;
+            if(opacity < 1.0)
+            {
+              opacity += 0.1;
+              opacity = Math.round(opacity * 100)/100;
+            }
+            
+            console.log(opacity);
+            pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
+            background-color: ${colorFlag}; opacity:${opacity};`
+            console.log("mousedown");
           }
           
-          console.log(opacity);
-          pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-          background-color: black; opacity:${opacity};`
-          console.log("mousedown");
           
         })
       })
     }
     else
     {
+      
       // remove squares
       while(dContainer.firstChild)
       {
@@ -72,7 +95,7 @@ sizeButton.addEventListener('click',()=>
         let  sContainer = document.createElement('div');
         sContainer.classList.add('small-container');
         sContainer.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-        background-color: black;opacity:0.0;`
+        background-color: ${colorFlag};opacity:0.0;`
         dContainer.appendChild(sContainer);
       }
       //setting flag back
@@ -86,16 +109,20 @@ sizeButton.addEventListener('click',()=>
         let opacity= 0.0;
           pixel.addEventListener('mouseover',()=>
         { 
-          if(opacity < 1.0)
+          if(clickFlag>0)
           {
-            opacity += 0.1;
-            opacity = Math.round(opacity * 100)/100;
+            if(opacity < 1.0)
+            {
+              opacity += 0.1;
+              opacity = Math.round(opacity * 100)/100;
+            }
+            
+            console.log(opacity);
+            pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
+            background-color: ${colorFlag}; opacity: ${opacity};`
+            console.log("mousedown");
           }
           
-          console.log(opacity);
-          pixel.style.cssText=`width:${calcSize}%;height:${calcSize}%;
-          background-color: black; opacity: ${opacity};`
-          console.log("mousedown");
           
         })
 
@@ -123,6 +150,41 @@ if(resetFlag<1)
 
   })
 }
+//palette listener
+const colors=document.querySelectorAll('.color');
+colors.forEach((color)=>
+{
+  color.addEventListener('click', ()=>
+{ console.log(color.id);
+  switch(color.id)
+  {
+    case 'white':
+      colorFlag="white";
+      console.log("colordupy");
+      break;
+    case 'red':
+      colorFlag="red";
+      break;
+    case 'green':
+      colorFlag="green";
+      break;
+    case 'blue':
+      colorFlag="blue";
+     break;
+    case 'yellow':
+      colorFlag="yellow";
+     break;
+    case 'orange':
+      colorFlag="orange";
+       break;
+    case 'pink':
+      alert("Pedał!");
+      break;
+    default:
+      colorFlag="black";
+  }
+})
+})
   
    
 
